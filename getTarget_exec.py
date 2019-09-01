@@ -39,7 +39,7 @@ class getTargetThread(threading.Thread):
                     self.num+=1
 
             time.sleep(1)
-            MotorController.breakMotor2A()
+            #MotorController.breakMotor2A()
         except  KeyboardInterrupt:
             print ("KeyboardInterrupt! stopped getTarget Thread ...")
 
