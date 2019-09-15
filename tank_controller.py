@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import sys
 import time
+import concurrent.futures
 from motor_controller import MotorController
 from getTarget_exec import getTargetThread
 
@@ -9,7 +10,10 @@ class TankController():
     def __init__(self):
         self.mc = MotorController()
         self.gt = getTargetThread()
-
+        self.TurretLeft = 0
+        self.TurretRight = 0
+        self.excutor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        self.excutor.submit(self.turret_move)
         #
         # 以下戦車の動作
         #
@@ -62,3 +66,17 @@ class TankController():
         self.mc.forwardMotor2B(100)
         time.sleep(5)
         self.mc.breakMotor2B()
+
+    def turret_move(self):
+        self.gt.GetFollowInfo(self.TurretLeft,self.TurretRight)
+        while True:
+            if self.TurretLeft != 0:
+                self.mc.forwardMotor2A(50)
+                time.sleep(self.TurretLeft)
+                print("turret:turnning left")
+            elif self.TurretRight != 0:
+                self.mc.reverseMotor2A(50)
+                time.sleep(self.TurretRight)
+                print("turret:turnning Right")
+            else:
+                time.sleep(1)
