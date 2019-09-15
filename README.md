@@ -1,36 +1,38 @@
 # toy-tank-2019
 A toy tank radio control using raspberry pi.
 
-�@�\�T�v
-  ���L�̂悤�Ƀ��W�R����Ԃ𐧌䂷��B
-    �EWifi�ʐM�ɂăR�}���h���󂯕t����B
-    �E�L���^�s����C��̃��[�^�[�𐧌䂷��B
-    �E�J�����f������W�I��F������B
+機能概要
+  下記のようにラジコン戦車を制御する。
+    ・Wifi通信にてコマンドを受け付ける。
+    ・キャタピラや砲台のモーターを制御する。
+    ・カメラ映像から標的を認識する。
 
-�����
-  �n�[�h�E�F�A
+動作環境
+  ハードウェア
     Raspberry Pi Zero
   OS
-    Raspbian Buster Lite (2019/06/20��)
+    Raspbian Buster Lite (2019/06/20版)
 
-�J����
+開発環境
   Python3 with OpenCV3
 
-�\��
+構成
   getTarget_exec.py
-    getTargetLib.py�𗘗p���ĖڕW�̎����ǔ������s�B
+    getTargetLib.pyを利用して目標の自動追尾を実行。
   getTargetLib.py
-    �ڕW��F�����邽�߂̉摜���������s�B
+    目標を認識するための画像処理を実行。
   motor_controller.py
-    ���]�E�t�]�E��~�Ȃǃ��[�^�[��������s
+    正転・逆転・停止などモーター制御を実行
   tank_controller.py
-    ��M�R�}���h�ɉ����ď��������s
+    受信コマンドに応じて処理を実行
   tank_server.py
-    Wifi�ڑ��ɂ��R�}���h�ʐM�����s�B
+    Wifi接続によるコマンド通信を実行。
 
-�N�����@
-  Python3��tank_server.py�����s�B
+起動方法
+  raspberry_piの同一フォルダ内に上記の5ファイルを格納し、
+  Python3でtank_server.pyを実行。
+  実行コマンド"python3 tankserver.py"
   
-�I�����@
-  �R���\�[���ɂ�Ctrl + c ���^�C�v�B
+終了方法
+  コンソールにてCtrl + c をタイプ。
 
