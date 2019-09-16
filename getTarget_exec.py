@@ -10,7 +10,6 @@ class getTargetThread(threading.Thread):
         self.TurretFollow = False
         self.num = 0
         self.getTarget = getTargetLib.getTargetPosition()
-        # self.mc = MotorController()
 
         # カメラの準備
         print ("initialize ...")
@@ -35,20 +34,17 @@ class getTargetThread(threading.Thread):
                             # 左に標的あり
                             self.TargetLeft = (-1) * (self.circle[0] - 640) / 120
                             print('target left %d sec' %(self.TargetLeft))
-                            # print("target is in left side")
-                            # self.mc.forwardMotor2A(50)
                         elif (self.circle[0] - 640) > 50:
                             # 右に標的あり
                             self.TargetRight = (self.circle[0] - 640) / 120
                             print('target right %d sec' %(self.TargetRight))
-                            # print("target is in right side")
-                            # self.mc.reverseMotor2A(50)
                         else:
+                            # 正面に標的あり
                             self.TargetRight = 0
                             self.TargetLeft = 0
                             print("target is in front")
-                            # self.mc.breakMotor2A()
                     else:
+                        # 標的情報初期化
                         self.TargetRight = 0
                         self.TargetLeft = 0
 
@@ -74,8 +70,10 @@ class getTargetThread(threading.Thread):
         print ("Stop Detect Target ...")
         self.TurretFollow = False
 
-    # 自動追尾方向情報取得
-    def GetFollowInfo(self, left, right ):
-        right = self.TargetRight
-        left = self.TargetLeft
-        print('turret left %d right %d' %(left,right))
+    # 砲台の左旋回方向情報取得
+    def GetInfoTurretTurnLeft(self):
+        return self.TargetLeft
+
+    # 砲台の右旋回方向情報取得
+    def GetInfoTurretTurnRight(self):
+        return self.TargetRight
