@@ -34,18 +34,23 @@ class getTargetThread(threading.Thread):
                         if (self.circle[0] - 640) < -50:
                             # 左に標的あり
                             self.TargetLeft = (-1) * (self.circle[0] - 640) / 120
-                            print("target is in left side")
+                            print('target left %d sec' %(self.TargetLeft))
+                            # print("target is in left side")
                             # self.mc.forwardMotor2A(50)
                         elif (self.circle[0] - 640) > 50:
                             # 右に標的あり
                             self.TargetRight = (self.circle[0] - 640) / 120
-                            print("target is in right side")
+                            print('target right %d sec' %(self.TargetRight))
+                            # print("target is in right side")
                             # self.mc.reverseMotor2A(50)
                         else:
                             self.TargetRight = 0
                             self.TargetLeft = 0
                             print("target is in front")
                             # self.mc.breakMotor2A()
+                    else:
+                        self.TargetRight = 0
+                        self.TargetLeft = 0
 
                     print ('%d' % (self.num))
                     self.num+=1
@@ -54,8 +59,8 @@ class getTargetThread(threading.Thread):
                     self.TargetRight = 0
                     self.TargetLeft = 0
                     
-            time.sleep(1)
-            #MotorController.breakMotor2A()
+                time.sleep(1)
+                #MotorController.breakMotor2A()
         except  KeyboardInterrupt:
             print ("KeyboardInterrupt! stopped getTarget Thread ...")
 
@@ -73,3 +78,4 @@ class getTargetThread(threading.Thread):
     def GetFollowInfo(self, left, right ):
         right = self.TargetRight
         left = self.TargetLeft
+        print('turret left %d right %d' %(left,right))

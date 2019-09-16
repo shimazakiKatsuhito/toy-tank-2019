@@ -68,8 +68,9 @@ class TankController():
         self.mc.breakMotor2B()
 
     def turret_move(self):
-        self.gt.GetFollowInfo(self.TurretLeft,self.TurretRight)
         while True:
+            self.gt.GetFollowInfo(self.TurretLeft,self.TurretRight)
+            print('turret left %d right %d' %(self.TurretLeft,self.TurretRight))
             if self.TurretLeft != 0:
                 self.mc.forwardMotor2A(50)
                 time.sleep(self.TurretLeft)
@@ -79,4 +80,5 @@ class TankController():
                 time.sleep(self.TurretRight)
                 print("turret:turnning Right")
             else:
-                time.sleep(1)
+                print("turret:No Action")
+                time.sleep(0.8)
