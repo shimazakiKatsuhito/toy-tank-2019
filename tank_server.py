@@ -6,6 +6,7 @@ from tank_controller import TankController
 # 参考
 # https://www.e-tinkers.com/2018/04/how-to-control-raspberry-pi-gpio-via-http-web-server/
 # 追記（嶋）
+# http://(対象のraspberrypiのIP):8000/にブラウザでアクセスするとリンクが出てくる
 # 当ファイルを実行時は'python3 tank_server.py'で実行しましょう！
 # 'python tank_server.py'とするとpython2で動くので実行できません。
 
