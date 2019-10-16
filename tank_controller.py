@@ -50,6 +50,11 @@ class TankController():
         #
     def turret_follow(self):
         # 標的追尾開始
+        self.mc.forwardMotor2A(100)
+        time.sleep(3)
+        self.mc.reverseMotor2A(100)
+        time.sleep(3)
+
         print("exec: " ,sys._getframe().f_code.co_name)
         self.gt.FollowStart()
 
@@ -61,9 +66,9 @@ class TankController():
     def turret_shoot(self):
         # BB弾発射
         print("exec: " ,sys._getframe().f_code.co_name)
-        self.mc.forwardMotor2B(100)
+        self.mc.forwardMotor2A(100)
         time.sleep(5)
-        self.mc.breakMotor2B()
+        self.mc.breakMotor2A()
 
     def turret_move(self):
         # 砲台の旋回
@@ -75,11 +80,11 @@ class TankController():
             TurretRight = self.gt.GetInfoTurretTurnRight()
             print('turret left %d right %d' %(TurretLeft,TurretRight))
             if TurretLeft != 0:
-                self.mc.forwardMotor2A(100)
+                self.mc.forwardMotor2B(40)
                 time.sleep(TurretLeft)
                 print("turret:turnning left")
             elif TurretRight != 0:
-                self.mc.reverseMotor2A(100)
+                self.mc.reverseMotor2B(40)
                 time.sleep(TurretRight)
                 print("turret:turnning Right")
             else:
