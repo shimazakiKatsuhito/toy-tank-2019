@@ -11,9 +11,9 @@ class getTargetPosition:
 
 
   # 的検出の感度パラメータ
-  minDist = 75     # 近接する円をリジェクト
-  param1  = 400    # エッジ感度：大きいほうが高感度
-  param2  = 30     # 円感度：小さいほうが好感度だが、誤検出増える
+  minDist = 75    # 近接する円をリジェクト
+  param1  = 30    # エッジ感度：大きいほうが高感度
+  param2  = 1000  # 円感度：小さいほうが好感度だが、誤検出増える
 
   # Debug用画像出力
   DebugImageOutputFlag=1  # 0:出力しない 1:出力する
@@ -31,6 +31,9 @@ class getTargetPosition:
     self.cap.release()
 
   def getTargetPos(self):
+    # バッファにたまっているものを読み飛ばす
+    for i in range(1,10):
+      ret, img = self.cap.read()
     # VideoCaptureから1フレーム読み込む
     ret = False
     cnt = 0
@@ -44,13 +47,18 @@ class getTargetPosition:
     # 画像の前処理
     #  グレー化
     imgray1 = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    # imgray1 = cv2.split(img)
     #  ぼかし
     imgray = cv2.medianBlur(imgray1,5)
+    # 2値化
+    #imthreshold = cv2.threshold(imgray,180,255,cv2.THRESH_BINARY)
+    # エッジング
+    imedge = cv2.Canny(imgray,100,400)
 
     # 的のサークル検出
     # circles = cv2.HoughCircles(imgray, cv2.cv.CV_HOUGH_GRADIENT, 1, 
     #              self.minDist, self.param1, self.param2, minRadius=10, maxRadius=200)
-    circles = cv2.HoughCircles(imgray, cv2.HOUGH_GRADIENT, 1, 
+    circles = cv2.HoughCircles(imedge, cv2.HOUGH_GRADIENT, 2, 
                   self.minDist, self.param1, self.param2, minRadius=10, maxRadius=200)
     # cv2.cv.CV_HOUGH_GRADIENT->cv2.HOUGH_GRADIENT
     # Python2->Python3 / CV2.x->CV3.xで定義が変わることがあるので注意！
@@ -70,6 +78,7 @@ class getTargetPosition:
          cv2.imwrite('DetectCircles'+str(self.numnum)+'.jpg', img)
          cv2.imwrite('DetectCircles'+str(self.numnum)+'_gray.jpg', imgray1)
          cv2.imwrite('DetectCircles'+str(self.numnum)+'_medi.jpg', imgray)
+         cv2.imwrite('DetectCircles'+str(self.numnum)+'_edge.jpg', imedge)
 
        self.numnum+=1
        return circles[0][0]
