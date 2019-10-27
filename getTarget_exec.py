@@ -30,14 +30,20 @@ class getTargetThread(threading.Thread):
 
                     if self.circle is not None:
                         print('X:%d Y:%d R:%d' % (self.circle[0],self.circle[1],self.circle[2]))
+                        # 1280×720画素の画像にて基準(中心？)から右か左かで
+                        # 砲台の旋回方向と旋回時間を決定する
+                        # 現状はカメラが上下逆転してセットされているので、
+                        # 左上原点の画像と現実は左右逆と考える。
                         if (self.circle[0] - 640) < -50:
                             # 左に標的あり
-                            self.TargetLeft = (-1) * (self.circle[0] - 640) / 120
-                            print('target left %d sec' %(self.TargetLeft))
+                            self.TargetRight = abs(((self.circle[0] - 640) / 120) * 0.5)
+                            time.sleep(self.TargetRight)
+                            print('target Right %d sec' %(self.TargetRight))
                         elif (self.circle[0] - 640) > 50:
                             # 右に標的あり
-                            self.TargetRight = (self.circle[0] - 640) / 120
-                            print('target right %d sec' %(self.TargetRight))
+                            self.TargetLeft = abs(((self.circle[0] - 640) / 120) * 0.5)
+                            time.sleep(self.TargetLeft)
+                            print('target Left %d sec' %(self.TargetLeft))
                         else:
                             # 正面に標的あり
                             self.TargetRight = 0
@@ -55,7 +61,7 @@ class getTargetThread(threading.Thread):
                     self.TargetRight = 0
                     self.TargetLeft = 0
                     
-                time.sleep(1)
+                time.sleep(0.5)
                 #MotorController.breakMotor2A()
         except  KeyboardInterrupt:
             print ("KeyboardInterrupt! stopped getTarget Thread ...")
