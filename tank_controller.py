@@ -82,11 +82,13 @@ class TankController():
             if TurretLeft != 0:
                 self.mc.forwardMotor2B(40)
                 time.sleep(TurretLeft)
+                self.mc.breakMotor2B()
                 print("turret:turnning left")
             elif TurretRight != 0:
                 self.mc.reverseMotor2B(40)
                 time.sleep(TurretRight)
+                self.mc.breakMotor2B()
                 print("turret:turnning Right")
             else:
                 print("turret:No Action")
-                time.sleep(0.8)
+                time.sleep(1.0)
