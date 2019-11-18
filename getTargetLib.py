@@ -13,7 +13,7 @@ class getTargetPosition:
   # 的検出の感度パラメータ
   minDist = 75    # 近接する円をリジェクト
   param1  = 30    # エッジ感度：大きいほうが高感度
-  param2  = 1000  # 円感度：小さいほうが好感度だが、誤検出増える
+  param2  = 50   # 円感度：小さいほうが好感度だが、誤検出増える
 
   # Debug用画像出力
   DebugImageOutputFlag=1  # 0:出力しない 1:出力する
@@ -45,13 +45,16 @@ class getTargetPosition:
         print("Image Reading Failure")
 
     # 画像の前処理
-    #  グレー化
+    # 特定の色を抜く(カットアンドトライだが、Gを抜くのが最適だった))
+    # img[:,:,0] = 0  # Bの色を抜く
+    img[:,:,1] = 0  # Gの色を抜く
+    # img[:,:,2] = 0  # Rの色を抜く
+    #  グレー化(R成分のみ出力)
     imgray1 = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    # imgray1 = cv2.split(img)
     #  ぼかし
     imgray = cv2.medianBlur(imgray1,5)
     # 2値化
-    #imthreshold = cv2.threshold(imgray,180,255,cv2.THRESH_BINARY)
+    # imthreshold = cv2.threshold(imgray,180,255,cv2.THRESH_BINARY)
     # エッジング
     imedge = cv2.Canny(imgray,100,400)
 
