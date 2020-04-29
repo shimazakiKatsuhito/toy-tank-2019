@@ -78,7 +78,7 @@ class TankController():
             TurretRight = 0
             TurretLeft = self.gt.GetInfoTurretTurnLeft()
             TurretRight = self.gt.GetInfoTurretTurnRight()
-            print('turret left %d right %d' %(TurretLeft,TurretRight))
+            print('turret left %1.2f right %1.2f' %(TurretLeft,TurretRight))
             if TurretLeft != 0:
                 self.mc.forwardMotor2B(40)
                 time.sleep(TurretLeft)

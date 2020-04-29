@@ -35,15 +35,23 @@ class getTargetThread(threading.Thread):
                         # 現状はカメラが上下逆転してセットされているので、
                         # 左上原点の画像と現実は左右逆と考える。
                         if (self.circle[0] - 640) < -50:
-                            # 左に標的あり
+                            # 画面左に標的あり
+                            # 右旋回時間(上限2.0sec)算出＆設定
                             self.TargetRight = abs(((self.circle[0] - 640) / 120) * 0.5)
+                            if self.TargetRight > 2.0:
+                                self.TargetRight = 2.0
+                            # 旋回完了待ち
                             time.sleep(self.TargetRight)
-                            print('target Right %d sec' %(self.TargetRight))
+                            print('target Right %1.2f sec' %(self.TargetRight))
                         elif (self.circle[0] - 640) > 50:
-                            # 右に標的あり
+                            # 画面右に標的あり
+                            # 左旋回時間(上限2.0sec)算出＆設定
                             self.TargetLeft = abs(((self.circle[0] - 640) / 120) * 0.5)
+                            if self.TargetLeft > 2.0:
+                                self.TargetLeft = 2.0
+                            # 旋回完了待ち
                             time.sleep(self.TargetLeft)
-                            print('target Left %d sec' %(self.TargetLeft))
+                            print('target Left %1.2f sec' %(self.TargetLeft))
                         else:
                             # 正面に標的あり
                             self.TargetRight = 0

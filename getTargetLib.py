@@ -12,7 +12,7 @@ class getTargetPosition:
   # 的検出の感度パラメータ
   minDist = 75    # 近接する円をリジェクト
   param1  = 100   # エッジ感度：大きいほうが高感度
-  param2  = 100    # 円感度：小さいほうが好感度だが、誤検出増える
+  param2  = 25    # 円感度：小さいほうが好感度だが、誤検出増える
 
   # Debug用画像出力
   DebugImageOutputFlag=1  # 0:出力しない 1:出力する
@@ -31,7 +31,7 @@ class getTargetPosition:
 
   def getTargetPos(self):
     # バッファにたまっているものを読み飛ばす
-    for i in range(1,10):
+    for i in range(1,5):
       ret, img = self.cap.read()
     # VideoCaptureから1フレーム読み込む
     ret = False
@@ -76,10 +76,10 @@ class getTargetPosition:
             cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
 
          # 加工済の画像を保存
-         cv2.imwrite('DetectCircles'+str(self.numnum)+'.jpg', img)
-         cv2.imwrite('DetectCircles'+str(self.numnum)+'_gray.jpg', imgray1)
-         cv2.imwrite('DetectCircles'+str(self.numnum)+'_medi.jpg', imgray)
-         cv2.imwrite('DetectCircles'+str(self.numnum)+'_edge.jpg', imedge)
+         # cv2.imwrite('DetectCircles'+str(self.numnum)+'.jpg', img)
+         # cv2.imwrite('DetectCircles'+str(self.numnum)+'_gray.jpg', imgray1)
+         # cv2.imwrite('DetectCircles'+str(self.numnum)+'_medi.jpg', imgray)
+         # cv2.imwrite('DetectCircles'+str(self.numnum)+'_edge.jpg', imedge)
 
        self.numnum+=1
        return circles[0][0]
