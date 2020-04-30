@@ -2,8 +2,10 @@
 import sys
 import time
 import concurrent.futures
+import threading
 from motor_controller import MotorController
 from getTarget_exec import getTargetThread
+
 
 class TankController():
     """ タンクコントローラー """
@@ -12,6 +14,7 @@ class TankController():
         self.gt = getTargetThread()
         self.excutor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
         self.excutor.submit(self.turret_move)
+        self.lock = threading.Lock()
         #
         # 以下戦車の動作
         #
@@ -50,11 +53,6 @@ class TankController():
         #
     def turret_follow(self):
         # 標的追尾開始
-        self.mc.forwardMotor2A(100)
-        time.sleep(3)
-        self.mc.reverseMotor2A(100)
-        time.sleep(3)
-
         print("exec: " ,sys._getframe().f_code.co_name)
         self.gt.FollowStart()
 
@@ -78,17 +76,30 @@ class TankController():
             TurretRight = 0
             TurretLeft = self.gt.GetInfoTurretTurnLeft()
             TurretRight = self.gt.GetInfoTurretTurnRight()
-            print('turret left %1.2f right %1.2f' %(TurretLeft,TurretRight))
+            # print('turret left %1.2f right %1.2f' %(TurretLeft,TurretRight))
+            # 時間計測開始
+            start = time.time()
+            print('tank_ctrl:logtime1 start')    
+
             if TurretLeft != 0:
+                self.lock.acquire()
                 self.mc.forwardMotor2B(40)
+                # print("turret:turnning left")
                 time.sleep(TurretLeft)
                 self.mc.breakMotor2B()
-                print("turret:turnning left")
+                self.gt.ClearInfoTurretTurnLeft()
+                self.lock.release()
             elif TurretRight != 0:
+                self.lock.acquire()
                 self.mc.reverseMotor2B(40)
+                # print("turret:turnning Right")
                 time.sleep(TurretRight)
                 self.mc.breakMotor2B()
-                print("turret:turnning Right")
+                self.gt.ClearInfoTurretTurnRight()
+                self.lock.release()
             else:
-                print("turret:No Action")
-                time.sleep(1.0)
+                # print("turret:No Action")
+                time.sleep(0.5)
+
+            time2 = time.time() - start
+            print('tank_ctrl:logtime2 %1.2f sec' %(time2))    
