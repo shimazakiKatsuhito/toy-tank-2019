@@ -1,19 +1,18 @@
 # toy-tank-2019
 A toy tank radio control using raspberry pi.
 
-機能概要
+## 機能概要
   下記のようにラジコン戦車を制御する。
     ・Wifi通信にてコマンドを受け付ける。
     ・キャタピラや砲台のモーターを制御する。
     ・カメラ映像から標的を認識する。
 
-動作環境
-  ハードウェア
+## ハードウェア
     Raspberry Pi Zero
-  OS
+### OS
     Raspbian Buster Lite (2019/06/20版)
 
-開発環境
+## 使用言語・開発環境
   Python3 with OpenCV3
 
 構成
@@ -28,11 +27,14 @@ A toy tank radio control using raspberry pi.
   tank_server.py
     Wifi接続によるコマンド通信を実行。
 
-起動方法
+## 使い方
+### デプロイ方法
+
+### 起動方法
   raspberry_piの同一フォルダ内に上記の5ファイルを格納し、
   Python3でtank_server.pyを実行。
   実行コマンド"python3 tankserver.py"
   
-終了方法
+### 終了方法
   コンソールにてCtrl + c をタイプ。
 
