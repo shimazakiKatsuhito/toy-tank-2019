@@ -1,5 +1,6 @@
 # toy-tank-2019
 A toy tank radio control using raspberry pi.
+![サムネイル](https://user-images.githubusercontent.com/54632092/90398486-7ba01a00-e0d4-11ea-9d85-63631d08e69d.jpg)
 
 ## 機能概要
   下記のようにラジコン戦車を制御する。
