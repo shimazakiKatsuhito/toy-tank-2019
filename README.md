@@ -1,7 +1,7 @@
 # toy-tank-2019 ラジコン側プログラム
 
 ![サムネイル2](https://user-images.githubusercontent.com/54632092/90399098-6081da00-e0d5-11ea-805a-0aa208311b5a.jpg)
-![img_20190819_185839_nakami_2](https://user-images.githubusercontent.com/54632092/90508317-7bfeea80-e192-11ea-9ee7-6054f7ff09a8.jpg)
+![img_20190819_185839_nakami_2](https://user-images.githubusercontent.com/54632092/90508719-2e36b200-e193-11ea-9100-7753fa51c446.jpg)
 
 ## 機能概要
 ラジコン戦車の制御プログラム。下記のような機能を有する。
