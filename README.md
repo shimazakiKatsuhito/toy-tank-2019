@@ -9,13 +9,18 @@
 - 画像処理 : カメラ映像から標的を認識する。
 
 ## 装置構成
+### 筐体(戦車本体)
+バトルタンク－陸上自衛隊74式戦車
 ### マイコン
-    Raspberry Pi Zero
+Raspberry Pi Zero
+### MEM
+MicroSD 32GB
 ### OS
-    Raspbian Buster Lite (2019/06/20版)
+Raspbian Buster Lite (2019/06/20版)
 ### カメラ
-
+usbカメラ
 ### モータードライバ
+デュアルモータードライバDRV8835 × 2個
 
 ## 使用言語・開発環境
   Python3 with OpenCV3
