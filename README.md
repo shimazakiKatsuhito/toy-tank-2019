@@ -11,17 +11,17 @@
 
 ## 装置構成
 ### 筐体(戦車本体)
-バトルタンク－陸上自衛隊74式戦車
+  バトルタンク－陸上自衛隊74式戦車
 ### マイコン
-Raspberry Pi Zero
+  Raspberry Pi Zero
 ### MEM
-MicroSD 32GB
+  MicroSD 32GB
 ### OS
-Raspbian Buster Lite (2019/06/20版)
+  Raspbian Buster Lite (2019/06/20版)
 ### カメラ
-usbカメラ
+  usbカメラ
 ### モータードライバ
-デュアルモータードライバDRV8835 × 2個
+  デュアルモータードライバDRV8835 × 2個
 
 ## ソース(ラジコン戦車制御アプリ)
 ### プログラミング言語
