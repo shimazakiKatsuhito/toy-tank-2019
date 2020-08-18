@@ -1,6 +1,7 @@
 # toy-tank-2019 ラジコン側プログラム
 
 ![サムネイル2](https://user-images.githubusercontent.com/54632092/90399098-6081da00-e0d5-11ea-805a-0aa208311b5a.jpg)
+![img_20190819_185839_nakami](https://user-images.githubusercontent.com/54632092/90507816-7ce34c80-e191-11ea-8e22-36c0b01022c5.jpg)
 
 ## 機能概要
 ラジコン戦車の制御プログラム。下記のような機能を有する。
@@ -22,8 +23,11 @@ usbカメラ
 ### モータードライバ
 デュアルモータードライバDRV8835 × 2個
 
-## 使用言語・開発環境
-  Python3 with OpenCV3
+## ソース(ラジコン戦車制御アプリ)
+### プログラミング言語
+Python3
+### ライブラリ
+OpenCV3
 
 ## 使い方
 ### デプロイ方法
