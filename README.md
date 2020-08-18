@@ -1,4 +1,4 @@
-# toy-tank-2019 ラジコン側プログラム
+# toy-tank-2019 ラジコン戦車制御プログラム
 
 ![サムネイル2](https://user-images.githubusercontent.com/54632092/90399098-6081da00-e0d5-11ea-805a-0aa208311b5a.jpg)
 ![img_20190819_185839_nakami_2](https://user-images.githubusercontent.com/54632092/90508719-2e36b200-e193-11ea-9100-7753fa51c446.jpg)
