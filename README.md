@@ -41,7 +41,7 @@ Visual Studio Code
 2. raspberry pi にOpenCV3をインストール。
 3. 適当なフォルダに当リポジトリをクローン
    ```
-   git clone https://github.com/Nao6165/TimeCardReminder.git
+   git clone https://github.com/shimazakiKatsuhito/toy-tank-2019.git
    ```
 4. ソースコードを編集
 
