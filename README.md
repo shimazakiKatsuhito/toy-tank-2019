@@ -44,7 +44,7 @@ raspberry_piの同一フォルダ内に下記のファイルを格納し、コ�
 - tank_controller.py
 - tank_server.py
     
-実行コマンド'''python3 tankserver.py'''
+実行コマンド  '''python3 tankserver.py'''
   
 ### 終了方法
   コンソールにてCtrl + c をタイプ。
