@@ -37,9 +37,14 @@ OpenCV3
 ### デプロイ方法
 
 ### 起動方法
-  raspberry_piの同一フォルダ内に上記の5ファイルを格納し、
-  Python3でtank_server.pyを実行。
-  実行コマンド"python3 tankserver.py"
+raspberry_piの同一フォルダ内に下記のファイルを格納し、コマンドを実行。
+- getTarget_exec.py
+- getTargetLib.py
+- motor_controller.py
+- tank_controller.py
+- tank_server.py
+    
+実行コマンド'''python3 tankserver.py'''
   
 ### 終了方法
   コンソールにてCtrl + c をタイプ。
