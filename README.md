@@ -32,9 +32,18 @@ usbカメラ
 Python3
 ### ライブラリ
 OpenCV3
+### 開発環境(テキストエディタ)
+Visual Studio Code
 
 ## 使い方
 ### デプロイ方法
+1. raspberry pi にpython3をインストール。
+2. raspberry pi にOpenCV3をインストール。
+3. 適当なフォルダに当リポジトリをクローン
+   ```
+   git clone https://github.com/Nao6165/TimeCardReminder.git
+   ```
+4. ソースコードを編集
 
 ### 起動方法
 raspberry_piの同一フォルダ内に下記の5ファイルを格納し、コマンドを実行。<br>  ファイル：
